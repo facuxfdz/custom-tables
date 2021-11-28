@@ -5,7 +5,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className="p-3 navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="p-3 navbar fixed-top navbar-expand-lg navbar-light bg-light">
         <button
           className="navbar-toggler"
           type="button"

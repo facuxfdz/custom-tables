@@ -27,7 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "db-watch": "json-server --watch db.json --port 5000 --routes routes.json"
+    "db-watch": "json-server --watch db.json --port 5000 --routes routes.json --no-cors"
   },
   "eslintConfig": {
     "extends": "react-app"

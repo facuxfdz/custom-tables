@@ -1,20 +1,19 @@
 import React from "react";
 import { Navbar } from "./app/components";
-import {Explore} from './pages'
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from 'react-router-dom'
+import { Explore } from "./pages";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { CartProvider } from "./app/context/CartContext";
 
 function App() {
   return (
     <Router>
-      <Navbar />
+      <CartProvider>
+        <Navbar />
 
-      <Routes>
-        <Route path="/explore" element={<Explore />}/>
-      </Routes>
+        <Routes>
+          <Route path="/explore" element={<Explore />} />
+        </Routes>
+      </CartProvider>
     </Router>
   );
 }
