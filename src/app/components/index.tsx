@@ -1,3 +1,3 @@
 import Navbar from './Navbar/Navbar'
-
-export {Navbar}
+import ItemListContainer from './ItemListContainer/ItemListContainer'
+export {Navbar, ItemListContainer}

@@ -1,3 +1,3 @@
-import type { Item }  from "./Items";
+import type { Props }  from "./ItemProps";
 
-export type { Item }
+export type { Props as ItemProps}

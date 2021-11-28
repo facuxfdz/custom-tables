@@ -1,6 +1,6 @@
 import React from "react";
 import { Navbar } from "./app/components";
-import { ItemListContainer } from "./features/tables";
+import {Explore} from './pages'
 import {
   BrowserRouter as Router,
   Routes,
@@ -13,7 +13,7 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/explore" element={<ItemListContainer title="Explore our products" />}/>
+        <Route path="/explore" element={<Explore />}/>
       </Routes>
     </Router>
   );

@@ -1,0 +1,70 @@
+{
+  "tables": [
+    { "id": 1, "category": "pc-desk", "size": "small", "price": 240, "description" : "A little and comfortable desk"},
+    { "id": 2, "category": "diningroom", "size": "standard", "price": 335, "description" : "A standard dining room table"},
+    { "id": 3, "category": "diningroom", "size": "large", "price": 500, "description" : "A large dining room table"},
+    { "id": 4, "category": "bathroom", "size": "standard", "price": 380, "description" : "A standard bathroom table"}
+  ],
+  "sizes": [
+    {
+      "name": "pc-desk",
+      "sizes": {
+        "small": {
+          "length": 90,
+          "width": 40,
+          "height": 70
+        },
+        "standard": {
+          "length": 100,
+          "width": 45,
+          "height": 74
+        },
+        "large": {
+          "length": 135,
+          "width": 60,
+          "height": 75
+        }
+      }
+    },
+    {
+      "name": "diningroom",
+      "sizes": {
+        "small": {
+          "length": 120,
+          "width": 70,
+          "height": 68
+        },
+        "standard": {
+          "length": 140,
+          "width": 80,
+          "height": 70
+        },
+        "large": {
+          "length": 145,
+          "width": 80,
+          "height": 70
+        }
+      }
+    },
+    {
+      "name": "bathroom",
+      "sizes": {
+        "small": {
+          "length": 100,
+          "width": 40,
+          "height": 70
+        },
+        "standard": {
+          "length": 120,
+          "width": 45,
+          "height": 70
+        },
+        "large": {
+          "length": 135,
+          "width": 45,
+          "height": 73
+        }
+      }
+    }
+  ]
+}
