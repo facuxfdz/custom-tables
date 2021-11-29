@@ -8,7 +8,7 @@ const GenericItemList = <T extends IdjObj>({
   return (
     <div className="w-100 text-center my-5">
       {data.map((item) => (
-          <Item item={item} renderItem={renderItem}/>
+          <Item key={item.id} item={item} renderItem={renderItem}/>
       ))}
     </div>
   );
