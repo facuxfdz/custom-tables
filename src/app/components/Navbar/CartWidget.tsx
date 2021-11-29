@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { useCartContext } from "../../hooks";
 
 const CartWidget = () => {
@@ -8,7 +8,7 @@ const CartWidget = () => {
   return (
     <ul className="navbar-nav">
       <li className="nav-item">
-        <a className="nav-link" href="#">
+        <a className="nav-link" href="#!">
           <span>
             <i className="fas fa-shopping-cart"></i>
           </span>

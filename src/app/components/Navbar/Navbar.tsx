@@ -33,7 +33,7 @@ const Navbar = () => {
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
-                href="#"
+                href="#!"
                 id="navbarDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -43,12 +43,12 @@ const Navbar = () => {
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#!">
                     PC Desk
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#!">
                     Dining room
                   </a>
                 </li>
@@ -56,7 +56,7 @@ const Navbar = () => {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#!">
                     Bathroom
                   </a>
                 </li>
