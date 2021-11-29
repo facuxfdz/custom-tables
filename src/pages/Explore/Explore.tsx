@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { ItemListContainer } from "../../app/components";
-import ItemCount from "../../app/components/ItemCount/ItemCount";
-import { IdjObj } from "../../app/components/ItemListContainer/ItemListContainer";
+import { GenericItemList, ItemCount } from "../../app/components";
+import type { IdjObj } from "../../types/Items";
 
-
-const Explore = () => {
+const Explore = () => { // This component act as ItemListContainer
   const [tables, setTables] = useState({} as IdjObj);
 
   useEffect(() => {
@@ -25,12 +23,12 @@ const Explore = () => {
 
   const items =
     Object.values(tables).length === 0 ? null : (
-      <ItemListContainer
+      <GenericItemList
         renderItem={(item) => (
             <ItemCount id={item.id} category={item.category} size={item.size} price={item.price} description={item.description}/>
           )
         }
-        data={Object.values(tables)}
+        data={Object.values(tables)} // tables itself is first an empty object but then it turns into an array. That's why y pass it into Object.values()
       />
     );
 

@@ -1,3 +1,3 @@
-import type { Props }  from "./ItemProps";
+import type { GenericProps, IdjObj, ItemProps }  from "./ItemProps";
 
-export type { Props as ItemProps}
+export type { GenericProps, IdjObj, ItemProps}
