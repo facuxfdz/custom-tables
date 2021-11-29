@@ -1,4 +1,4 @@
-import type { IdjObj, GenericProps } from "../../../types/Items";
+import type { IdjObj, GenericProps } from "../../../types";
 import { Item } from "..";
 
 const GenericItemList = <T extends IdjObj>({

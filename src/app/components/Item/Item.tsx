@@ -1,5 +1,5 @@
 import React from "react";
-import { IdjObj, ItemProps } from "../../../types/Items";
+import { IdjObj, ItemProps } from "../../../types";
 
 
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { GenericItemList, ItemCount } from "../../app/components";
-import type { IdjObj } from "../../types/Items";
+import type { IdjObj } from "../../types";
 
 const Explore = () => { // This component act as ItemListContainer
   const [tables, setTables] = useState({} as IdjObj);
