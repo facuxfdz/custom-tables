@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useAppSelector } from "../../hooks";
 
 const CartWidget = () => {
@@ -12,7 +13,7 @@ const CartWidget = () => {
   return (
     <ul className="navbar-nav">
       <li className="nav-item">
-        <a className="nav-link" href="#!">
+        <Link className="nav-link" to='/cart'>
           <span>
             <i className="fas fa-shopping-cart"></i>
           </span>
@@ -21,7 +22,7 @@ const CartWidget = () => {
               {cartAmount}
             </span>
           ) : null}
-        </a>
+        </Link>
       </li>
     </ul>
   );

@@ -1,15 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { GenericItemList, ItemCount } from "../../app/components";
+import { useAppDispatch } from "../../app/hooks";
+import { setProduct } from "../../features/products/productsSlice";
 import type { IdjObj } from "../../types";
 
-const Explore = () => { // This component act as ItemListContainer
+interface Product {
+  id : number,
+  category : string,
+  size : string,
+  price : number,
+  description : string,
+}
+
+const ItemListContainer = () => { // This component act as ItemListContainer
   const [tables, setTables] = useState({} as IdjObj);
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     const fetchTables = async () => {
       const tables = await fetch("http://localhost:5000/tables");
       const tablesJSON = await tables.json();
       setTables(tablesJSON);
+      const productsObj : Product[] = Object.values(tablesJSON)
+      productsObj.forEach(product => {
+        dispatch(setProduct(product))
+      })
     };
 
     try {
@@ -19,7 +34,7 @@ const Explore = () => { // This component act as ItemListContainer
     } catch (error) {
       console.error(error);
     }
-  }, [tables]);
+  }, [tables, dispatch]);
 
   const items =
     Object.values(tables).length === 0 ? null : (
@@ -40,4 +55,4 @@ const Explore = () => { // This component act as ItemListContainer
   );
 };
 
-export default Explore;
+export default ItemListContainer;

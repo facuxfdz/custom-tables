@@ -1,6 +1,6 @@
 import React from "react";
 import { Navbar } from "./app/components";
-import { Explore } from "./pages";
+import { Cart, ItemDetailContainer, ItemListContainer as Explore } from "./pages";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -10,6 +10,8 @@ function App() {
 
         <Routes>
           <Route path="/explore" element={<Explore />} />
+          <Route path="/cart" element={<Cart />}></Route>
+          <Route path="/products/:productId" element={<ItemDetailContainer />}></Route>
         </Routes>
     </Router>
   );
