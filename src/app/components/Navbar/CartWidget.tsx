@@ -1,9 +1,13 @@
 import React from "react";
-import { useCartContext } from "../../hooks";
+import { useAppSelector } from "../../hooks";
 
 const CartWidget = () => {
-  const {cartAmount} = useCartContext();
-  
+
+  const cart = useAppSelector((state) => state.cart )
+  let cartAmount = 0
+  cart.products.forEach(product => {
+    cartAmount += product?.amount || 0
+  })
 
   return (
     <ul className="navbar-nav">

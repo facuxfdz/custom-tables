@@ -1,7 +1,7 @@
 import React from "react";
 import { Alert, Button, Card, ListGroup } from "react-bootstrap";
-import { addItem, removeItem } from "../../../features/cart/cartSlice";
-import { useAppDispatch, useCartContext } from "../../hooks";
+import { addItem } from "../../../features/cart/cartSlice";
+import { useAppDispatch } from "../../hooks";
 
 interface Item {
   id: number;
@@ -22,15 +22,8 @@ const ItemCount = ({id,category,size,price,description} : Item) => {
 
   const handleAdd = () => {
     dispatch(addItem({id,category,size,price,description,amount:1}))
-    incrementAmount(1);
   };
 
-  const handleRemove = () => {
-    dispatch(removeItem({id,category,size,price,description}))
-    decrementAmount(1);
-  };
-
-  const { incrementAmount, decrementAmount } = useCartContext();
 
   return (
     <Card style={{ width: "30rem" }}>
@@ -43,13 +36,11 @@ const ItemCount = ({id,category,size,price,description} : Item) => {
             Size: <Alert variant={`${alertClass}`}>{size}</Alert>
           </ListGroup.Item>
         </ListGroup>
-        <Button className="mx-3" onClick={handleAdd} variant="success">
+        <Button onClick={handleAdd} variant="success">
           Add to cart
         </Button>
 
-        <Button onClick={handleRemove} variant="danger">
-          Remove from cart
-        </Button>
+
       </Card.Body>
     </Card>
   );
