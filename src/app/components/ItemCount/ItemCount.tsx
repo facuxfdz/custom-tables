@@ -1,42 +1,23 @@
-import React from "react";
-import { Alert, Button, Card, ListGroup } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Button, InputGroup } from 'react-bootstrap'
 
-interface Item {
-  id: number;
-  category: string;
-  size: string;
-  price: number;
-  description: string;
+interface ItemCountProps {
+    counter : number,
+    handleDecrement : () => void,
+    handleIncrement : () => void
 }
 
-const ItemCount = ({ id, category, size, price, description }: Item) => {
-
-  let alertClass;
-  if (size === "small") alertClass = "info";
-  else if (size === "standard") alertClass = "warning";
-  else alertClass = "success";
+const ItemCount = ({counter,handleDecrement,handleIncrement} : ItemCountProps) => {
 
 
-  return (
-    <Card style={{ width: "30rem" }}>
-      <Card.Img variant="top" src="https://via.placeholder.com/150" />
-      <Card.Body>
-        <Card.Title>{category}</Card.Title>
-        <ListGroup variant="flush">
-          <ListGroup.Item>
-            Size: <Alert variant={`${alertClass}`}>{size}</Alert>
-          </ListGroup.Item>
-        </ListGroup>
+    
+    return (
+        <InputGroup className='my-3'>
+            <Button variant="danger" className='me-3' onClick={handleDecrement}>-</Button>
+            <InputGroup.Text>{counter}</InputGroup.Text>
+            <Button variant="success" className='mx-3' onClick={handleIncrement}>+</Button>
+        </InputGroup>
+    )
+}
 
-        <Button className="nav-item" variant="secondary">
-          <Link to={`/products/${id}`} className="nav-link text-light">
-            View detail
-          </Link>
-        </Button>
-      </Card.Body>
-    </Card>
-  );
-};
-
-export default ItemCount;
+export default ItemCount

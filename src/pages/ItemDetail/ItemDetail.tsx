@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
+import { ItemCount } from "../../app/components";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { addItem } from "../../features/cart/cartSlice";
 
-const ItemDetailContainer = () => {
+const ItemDetail = () => {
   const { productId } = useParams() as { productId: string };
   const dispatch = useAppDispatch();
 
+  const [counter,setCounter] = useState(1)
   const products = useAppSelector((state) => state.products.products);
   const navigate = useNavigate()
 
@@ -16,11 +18,19 @@ const ItemDetailContainer = () => {
   )[0];
   const { id, category, size, price, description } = productToRender;
   const handleAdd = () => {
-    dispatch(addItem({ id, category, size, price, description, amount: 1 }));
+    dispatch(addItem({ id, category, size, price, description, amount: counter }));
   };
 
   const handleFinish = () => {
     navigate(-1)  
+  }
+
+    
+  const handleIncrement = () => {
+      setCounter(prev => prev + 1)
+  }
+  const handleDecrement = () => {
+      setCounter(prev => prev - 1 > 1 ? prev-1 : 1)
   }
 
   return (
@@ -30,7 +40,7 @@ const ItemDetailContainer = () => {
         <Card.Body>
           <Card.Title>{productToRender.description}</Card.Title>
           <Card.Text>$ {productToRender.price}</Card.Text>
-
+          <ItemCount counter={counter} handleIncrement={handleIncrement} handleDecrement={handleDecrement}/>
           <Button onClick={handleAdd} variant="success">
             Add to cart
           </Button>
@@ -43,4 +53,4 @@ const ItemDetailContainer = () => {
   );
 };
 
-export default ItemDetailContainer;
+export default ItemDetail;

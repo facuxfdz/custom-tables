@@ -1,6 +1,7 @@
 import Navbar from './Navbar/Navbar'
 import GenericItemList from './GenericItemList/GenericItemList'
-import ItemCount from './ItemCount/ItemCount'
+import ItemDetailContainer from './ItemDetailContainer/ItemDetailContainer'
 import Item from './Item/Item'
+import ItemCount from './ItemCount/ItemCount'
 
-export {Navbar, GenericItemList, ItemCount, Item}
+export {Navbar, GenericItemList, ItemDetailContainer, Item, ItemCount}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { GenericItemList, ItemCount } from "../../app/components";
+import { GenericItemList, ItemDetailContainer } from "../../app/components";
 import { useAppDispatch } from "../../app/hooks";
 import { setProduct } from "../../features/products/productsSlice";
 import type { IdjObj } from "../../types";
@@ -40,7 +40,7 @@ const ItemListContainer = () => { // This component act as ItemListContainer
     Object.values(tables).length === 0 ? null : (
       <GenericItemList
         renderItem={(item) => (
-            <ItemCount id={item.id} category={item.category} size={item.size} price={item.price} description={item.description}/>
+            <ItemDetailContainer id={item.id} category={item.category} size={item.size} price={item.price} description={item.description}/>
           )
         }
         data={Object.values(tables)} // tables itself is first an empty object but then it turns into an array. That's why y pass it into Object.values()

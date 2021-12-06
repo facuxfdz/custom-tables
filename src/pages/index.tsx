@@ -1,5 +1,5 @@
 import ItemListContainer from "./ItemListContainer/ItemListContainer";
 import Cart from './Cart/Cart'
-import ItemDetailContainer from "./ItemDetailContainer/ItemDetailContainer";
+import ItemDetail from "./ItemDetail/ItemDetail";
 
-export {ItemListContainer, Cart, ItemDetailContainer}
+export {ItemListContainer, Cart, ItemDetail}
