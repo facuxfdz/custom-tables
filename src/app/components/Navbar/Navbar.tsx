@@ -30,38 +30,6 @@ const Navbar = () => {
                 Explore
               </Link>
             </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#!"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Categories
-              </a>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <a className="dropdown-item" href="#!">
-                    PC Desk
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#!">
-                    Dining room
-                  </a>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#!">
-                    Bathroom
-                  </a>
-                </li>
-              </ul>
-            </li>
           </ul>
         </div>
         <CartWidget />

@@ -13,7 +13,7 @@ const Cart = () => {
   return (
     <div className="my-5">
       {cart.products.map((cartItem) => (
-        <>
+        <div key={cartItem.id}>
           <p>DESCRIPTION : {cartItem.description}</p>
           <p>PRICE : {cartItem.price}</p>
           <p>AMOUNT : {cartItem.amount}</p>
@@ -21,7 +21,7 @@ const Cart = () => {
             <BsFillTrashFill />
           </Button>
           <hr />
-        </>
+        </div>
       ))}
     </div>
   );
