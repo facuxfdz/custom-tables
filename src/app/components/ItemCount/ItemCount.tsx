@@ -1,6 +1,7 @@
 import React from "react";
 import { Alert, Button, Card, ListGroup } from "react-bootstrap";
-import { useCartContext } from "../../hooks";
+import { addItem, removeItem } from "../../../features/cart/cartSlice";
+import { useAppDispatch, useCartContext } from "../../hooks";
 
 interface Item {
   id: number;
@@ -12,16 +13,20 @@ interface Item {
 
 const ItemCount = ({id,category,size,price,description} : Item) => {
 
+  const dispatch = useAppDispatch()
+
   let alertClass;
   if (size === "small") alertClass = "info";
   else if (size === "standard") alertClass = "warning";
   else alertClass = "success";
 
   const handleAdd = () => {
+    dispatch(addItem({id,category,size,price,description,amount:1}))
     incrementAmount(1);
   };
 
   const handleRemove = () => {
+    dispatch(removeItem({id,category,size,price,description}))
     decrementAmount(1);
   };
 
