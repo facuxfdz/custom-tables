@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface Product {
-    id : number,
+    id : string,
     category : string,
     size : string,
     price : number,
@@ -22,7 +22,10 @@ const productsSlice = createSlice({
     reducers: {
         setProduct : (state,action : PayloadAction<Product>) => {
             const {id,category,size,price,description} = action.payload
-            state.products.push({id,category,size,price,description})
+            const productInCart = state.products.find(prod => prod.id === id)
+            if(!productInCart){
+                state.products.push({id,category,size,price,description})
+            }
         }
     }
 })

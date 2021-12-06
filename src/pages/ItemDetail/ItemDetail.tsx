@@ -14,7 +14,7 @@ const ItemDetail = () => {
   const navigate = useNavigate()
 
   const productToRender = products.filter(
-    (product) => product.id === parseInt(productId)
+    (product) => product.id === productId
   )[0];
   const { id, category, size, price, description } = productToRender;
   const handleAdd = () => {

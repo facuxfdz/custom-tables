@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { GenericItemList, ItemDetailContainer } from "../../app/components";
 import { useAppDispatch } from "../../app/hooks";
 import { setProduct } from "../../features/products/productsSlice";
-import type { IdjObj } from "../../types";
+import {collection, getDocs} from 'firebase/firestore/lite'
+import {db} from '../../firebase/config'
 
 interface Product {
-  id : number,
+  id : string,
   category : string,
   size : string,
   price : number,
@@ -13,28 +14,37 @@ interface Product {
 }
 
 const ItemListContainer = () => { // This component act as ItemListContainer
-  const [tables, setTables] = useState({} as IdjObj);
+  const [tables, setTables] = useState<Product[]>([]);
   const dispatch = useAppDispatch()
 
   useEffect(() => {
     const fetchTables = async () => {
-      const tables = await fetch("http://localhost:5000/tables");
-      const tablesJSON = await tables.json();
-      setTables(tablesJSON);
-      const productsObj : Product[] = Object.values(tablesJSON)
-      productsObj.forEach(product => {
-        dispatch(setProduct(product))
+      const productsRef = collection(db,'products')
+      const docs = await getDocs(productsRef)
+      const products : Product[] = []
+      docs.forEach(doc => {
+        const prod = doc.data() as Product
+        prod.id = doc.id
+        products.push(prod)
       })
+      setTables(products)
+
     };
 
     try {
       if (Object.keys(tables).length === 0) {
         fetchTables();
+      }else{
+        tables.forEach(product => {
+          dispatch(setProduct(product))
+        })
       }
     } catch (error) {
       console.error(error);
     }
   }, [tables, dispatch]);
+
+
 
   const items =
     Object.values(tables).length === 0 ? null : (

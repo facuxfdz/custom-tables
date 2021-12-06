@@ -3,7 +3,7 @@ import { Alert, Button, Card, ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 interface Item {
-  id: number;
+  id: string | number;
   category: string;
   size: string;
   price: number;
