@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { addItem } from "../../features/cart/cartSlice";
 
@@ -9,6 +9,7 @@ const ItemDetailContainer = () => {
   const dispatch = useAppDispatch();
 
   const products = useAppSelector((state) => state.products.products);
+  const navigate = useNavigate()
 
   const productToRender = products.filter(
     (product) => product.id === parseInt(productId)
@@ -17,6 +18,11 @@ const ItemDetailContainer = () => {
   const handleAdd = () => {
     dispatch(addItem({ id, category, size, price, description, amount: 1 }));
   };
+
+  const handleFinish = () => {
+    navigate(-1)  
+  }
+
   return (
     <div className="d-flex justify-content-center my-5">
       <Card className="my-5" style={{ width: "30rem" }}>
@@ -27,6 +33,9 @@ const ItemDetailContainer = () => {
 
           <Button onClick={handleAdd} variant="success">
             Add to cart
+          </Button>
+          <Button onClick={handleFinish} className="mx-5" variant="warning">
+            Finish purchase
           </Button>
         </Card.Body>
       </Card>
