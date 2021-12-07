@@ -40,8 +40,11 @@ const ItemDetail = () => {
     setCounter((prev) => (prev - 1 > 1 ? prev - 1 : 1));
   };
   
+  const handleBack = () => {
+    navigate(-1)
+  }
   return (
-    <div className="d-flex justify-content-center my-5">
+    <div className="d-flex flex-column align-items-center justify-content-center my-5">
       <Card className="my-5" style={{ width: "30rem" }}>
         <Card.Img variant="top" src="https://via.placeholder.com/150" />
         <Card.Body>
@@ -73,6 +76,7 @@ const ItemDetail = () => {
           )}
         </Card.Body>
       </Card>
+        <Button variant="warning" onClick={handleBack}>Back to home</Button>
     </div>
   );
 };
