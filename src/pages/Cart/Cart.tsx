@@ -25,6 +25,11 @@ const Cart = () => {
   const handleBack = () => {
     navigate(-1);
   };
+
+  const handleSubmitCart = () => {
+    navigate("/confirm")
+  }
+
   return (
     <div className="my-5 d-flex flex-column align-items-center">
       {totalPurchase > 0 ? (
@@ -53,7 +58,7 @@ const Cart = () => {
             </div>
             <h1>Total</h1>
             <b>${totalPurchase}</b>
-            <Button className="my-5" variant="success">
+            <Button className="my-5" variant="success" onClick={handleSubmitCart}>
               Confirm cart
             </Button>
             <Button variant="warning" onClick={handleBack}>
