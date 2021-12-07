@@ -33,7 +33,7 @@ const productsSlice = createSlice({
             const {id,amount} = action.payload
             state.products.forEach(product => {
                 if(product.id === id){
-                    product.stock -= amount || 0
+                    product.stock += amount || 0
                 }
             })
         }

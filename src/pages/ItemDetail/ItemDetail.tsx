@@ -27,7 +27,7 @@ const ItemDetail = () => {
   };
   const handleFinish = () => {
     dispatch(
-      updateStock({ id, category, size, price, description, amount: counter })
+      updateStock({ id, category, size, price, description, amount: -counter })
     );
 
     navigate(-1);
