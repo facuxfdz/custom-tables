@@ -11,6 +11,7 @@ const ItemDetail = () => {
   const dispatch = useAppDispatch();
 
   const [counter, setCounter] = useState(1);
+  const [productAdded, setProductAdded] = useState(false);
   const products = useAppSelector((state) => state.products.products);
   const navigate = useNavigate();
 
@@ -22,11 +23,13 @@ const ItemDetail = () => {
     dispatch(
       addItem({ id, category, size, price, description, amount: counter })
     );
+    setProductAdded(true);
   };
   const handleFinish = () => {
     dispatch(
       updateStock({ id, category, size, price, description, amount: counter })
     );
+
     navigate(-1);
   };
 
@@ -36,7 +39,7 @@ const ItemDetail = () => {
   const handleDecrement = () => {
     setCounter((prev) => (prev - 1 > 1 ? prev - 1 : 1));
   };
-
+  
   return (
     <div className="d-flex justify-content-center my-5">
       <Card className="my-5" style={{ width: "30rem" }}>
@@ -54,11 +57,20 @@ const ItemDetail = () => {
               <Button onClick={handleAdd} variant="success">
                 Add to cart
               </Button>
-              <Button onClick={handleFinish} className="mx-5" variant="warning">
-                Finish purchase
-              </Button>
+
+              {productAdded ? (
+                <Button
+                  onClick={handleFinish}
+                  className="mx-5"
+                  variant="warning"
+                >
+                  Finish purchase
+                </Button>
+              ) : null}
             </>
-          ) : <Badge bg="secondary">OUT OF STOCK</Badge>}
+          ) : (
+            <Badge bg="secondary">OUT OF STOCK</Badge>
+          )}
         </Card.Body>
       </Card>
     </div>
