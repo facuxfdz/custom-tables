@@ -29,7 +29,7 @@ const ItemDetailContainer = ({ id, category, size, price, description }: Item) =
           </ListGroup.Item>
         </ListGroup>
 
-        <Button className="nav-item" variant="secondary">
+        <Button className="nav-item" variant="primary">
           <Link to={`/products/${id}`} className="nav-link text-light">
             View detail
           </Link>

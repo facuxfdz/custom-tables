@@ -11,6 +11,7 @@ interface Product {
   size : string,
   price : number,
   description : string,
+  stock : number
 }
 
 const ItemListContainer = () => { // This component act as ItemListContainer
