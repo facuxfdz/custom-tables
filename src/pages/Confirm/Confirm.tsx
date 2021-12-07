@@ -9,12 +9,20 @@ const Confirm = () => {
   const navigate = useNavigate();
 
   const handleCancelOperation = () => {
-      navigate(-1)
+    navigate(-1);
   };
 
   const handleSubmitCart = () => {
-      alert('Product Submitted')
-  }
+    const err = [name, email, tel].every((i) => i !== "");
+    if (err) {
+        // Logic to push to Firebase
+        alert("Product Submitted")
+    }
+    else {
+        // Logic to show an error
+        alert('FATAL ERROR')
+    }
+  };
   return (
     <div className="my-5 d-flex flex-column align-items-center w-100">
       <div className="mb-3">
