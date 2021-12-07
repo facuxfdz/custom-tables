@@ -18,7 +18,7 @@ const Cart = () => {
   const dispatch = useAppDispatch();
   const handleRemoveFromCart = (item: CartProduct) => {
     dispatch(removeItem(item));
-    dispatch(updateStock(item))
+    dispatch(updateStock(item));
   };
   const navigate = useNavigate();
 
@@ -27,45 +27,47 @@ const Cart = () => {
   };
 
   const handleSubmitCart = () => {
-    navigate("/confirm")
-  }
+    navigate("/confirm");
+  };
 
   return (
     <div className="my-5 d-flex flex-column align-items-center">
       {totalPurchase > 0 ? (
-        cart.products.map((cartItem) => (
-          <div key={cartItem.id} className="d-flex flex-column">
-            <>
-              <p>
-                <b>DESCRIPTION</b>: {cartItem.description}
-              </p>
-              <p>
-                <b>PRICE</b>: ${cartItem.price}
-              </p>
-              <p>
-                <b>AMOUNT</b>: {cartItem.amount}
-              </p>
-            </>
-            <div className="text-center">
-              <Button
-                variant="danger"
-                onClick={() => handleRemoveFromCart(cartItem)}
-                className="w-50"
-              >
-                <BsFillTrashFill />
-              </Button>
-              <hr />
+        <>
+          {cart.products.map((cartItem) => (
+            <div key={cartItem.id} className="d-flex flex-column">
+              <>
+                <p>
+                  <b>DESCRIPTION</b>: {cartItem.description}
+                </p>
+                <p>
+                  <b>PRICE</b>: ${cartItem.price}
+                </p>
+                <p>
+                  <b>AMOUNT</b>: {cartItem.amount}
+                </p>
+              </>
+              <div className="text-center">
+                <Button
+                  variant="danger"
+                  onClick={() => handleRemoveFromCart(cartItem)}
+                  className="w-50"
+                >
+                  <BsFillTrashFill />
+                </Button>
+                <hr />
+              </div>
             </div>
-            <h1>Total</h1>
-            <b>${totalPurchase}</b>
-            <Button className="my-5" variant="success" onClick={handleSubmitCart}>
-              Confirm cart
-            </Button>
-            <Button variant="warning" onClick={handleBack}>
-              Continue Shopping
-            </Button>
-          </div>
-        ))
+          ))}
+          <h1>Total</h1>
+          <b>${totalPurchase}</b>
+          <Button className="mt-5" variant="success" onClick={handleSubmitCart}>
+            Confirm cart
+          </Button>
+          <Button className="my-5" variant="warning" onClick={handleBack}>
+            Continue Shopping
+          </Button>
+        </>
       ) : (
         <>
           <Alert className="my-5" variant="warning">
