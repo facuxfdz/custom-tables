@@ -11,7 +11,6 @@ const ItemDetail = () => {
   const dispatch = useAppDispatch();
 
   const [counter, setCounter] = useState(1);
-  const [productAdded, setProductAdded] = useState(false);
   const products = useAppSelector((state) => state.products.products);
   const navigate = useNavigate();
 
@@ -23,15 +22,13 @@ const ItemDetail = () => {
     dispatch(
       addItem({ id, category, size, price, description, amount: counter })
     );
-    setProductAdded(true);
-  };
-  const handleFinish = () => {
     dispatch(
       updateStock({ id, category, size, price, description, amount: -counter })
     );
-
-    navigate(-1);
+    alert('Product added to cart!')
+    navigate(-1)
   };
+
 
   const handleIncrement = () => {
     setCounter((prev) => (prev + 1 <= stock ? prev + 1 : prev));
@@ -39,10 +36,10 @@ const ItemDetail = () => {
   const handleDecrement = () => {
     setCounter((prev) => (prev - 1 > 1 ? prev - 1 : 1));
   };
-  
+
   const handleBack = () => {
-    navigate(-1)
-  }
+    navigate(-1);
+  };
   return (
     <div className="d-flex flex-column align-items-center justify-content-center my-5">
       <Card className="my-5" style={{ width: "30rem" }}>
@@ -60,23 +57,15 @@ const ItemDetail = () => {
               <Button onClick={handleAdd} variant="success">
                 Add to cart
               </Button>
-
-              {productAdded ? (
-                <Button
-                  onClick={handleFinish}
-                  className="mx-5"
-                  variant="warning"
-                >
-                  Finish purchase
-                </Button>
-              ) : null}
             </>
           ) : (
             <Badge bg="secondary">OUT OF STOCK</Badge>
           )}
         </Card.Body>
       </Card>
-        <Button variant="warning" onClick={handleBack}>Back to home</Button>
+      <Button variant="warning" onClick={handleBack}>
+        Back to home
+      </Button>
     </div>
   );
 };
