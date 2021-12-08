@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import {} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { Timestamp,collection,addDoc } from "firebase/firestore/lite";
+import { db } from "../../firebase/config";
+import { emptyCart } from "../../features/cart/cartSlice";
+
 const Confirm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [tel, setTel] = useState("");
+  const [orderId,setOrderId] = useState("");
+
+  const dispatch = useAppDispatch()
   const navigate = useNavigate();
 
   const cart = useAppSelector((state) => state.cart);
@@ -25,9 +31,12 @@ const Confirm = () => {
     const dataOk = [name, email, tel].every((i) => i !== "");
     if (dataOk) {
       // Logic to push to Firebase
-      const mappingObj = {buyer: {name,email,tel},items: cart.products,date: new Date(), total: totalPurchase}
-      console.log(mappingObj)
-      alert("Product Submitted");
+      const order = {buyer: {name,email,tel},items: cart.products,date: Timestamp.fromDate(new Date()), total: totalPurchase}
+      const orders = collection(db,'orders')
+      addDoc(orders,order).then(res => {
+        setOrderId(res.id)
+        dispatch(emptyCart())
+      })
     } else {
       // Logic to show an error
       alert("FATAL ERROR");
