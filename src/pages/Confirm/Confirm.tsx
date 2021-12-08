@@ -2,25 +2,35 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import {} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../app/hooks";
 const Confirm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [tel, setTel] = useState("");
   const navigate = useNavigate();
 
+  const cart = useAppSelector((state) => state.cart);
+  const totalPurchase =
+    cart.products.length > 0
+      ? cart.products
+          .map((product) => product.price * (product?.amount || 1))
+          .reduce((acum, curr) => acum + curr)
+      : 0;
+
   const handleCancelOperation = () => {
     navigate(-1);
   };
 
   const handleSubmitCart = () => {
-    const err = [name, email, tel].every((i) => i !== "");
-    if (err) {
-        // Logic to push to Firebase
-        alert("Product Submitted")
-    }
-    else {
-        // Logic to show an error
-        alert('FATAL ERROR')
+    const dataOk = [name, email, tel].every((i) => i !== "");
+    if (dataOk) {
+      // Logic to push to Firebase
+      const mappingObj = {buyer: {name,email,tel},items: cart.products,date: new Date(), total: totalPurchase}
+      console.log(mappingObj)
+      alert("Product Submitted");
+    } else {
+      // Logic to show an error
+      alert("FATAL ERROR");
     }
   };
   return (
