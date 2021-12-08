@@ -28,10 +28,6 @@ const Confirm = () => {
   };
 
   const handleCloseModal = () => {
-    setName("")
-    setEmail("")
-    setTel("")
-    setOrderId("")
     navigate("/explore")
   }
 
@@ -51,6 +47,9 @@ const Confirm = () => {
         setOrderId(res.id);
         dispatch(emptyCart());
       });
+      setName("")
+      setEmail("")
+      setTel("")
     } else {
       // Logic to show an error
       alert("FATAL ERROR");
@@ -117,7 +116,7 @@ const Confirm = () => {
       </div>
       <Modal show={orderId} onHide={handleCloseModal}>
         <Modal.Header>
-          <Modal.Title>Your order was sent successfully</Modal.Title>
+          <Modal.Title>Your order was successfully registered!</Modal.Title>
         </Modal.Header>
         <Modal.Body>The order id is <b>{orderId}</b></Modal.Body>
         <Modal.Footer className="d-flex flex-column">
