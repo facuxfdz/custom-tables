@@ -23,7 +23,7 @@ const Cart = () => {
   const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate(-1);
+    navigate("/explore");
   };
 
   const handleSubmitCart = () => {
@@ -74,7 +74,7 @@ const Cart = () => {
             NO PRODUCTS ADDED YET
           </Alert>
           <Button variant="warning" onClick={handleBack}>
-            Back to home
+            Continue Shopping
           </Button>
         </>
       )}

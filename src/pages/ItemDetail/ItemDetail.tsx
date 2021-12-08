@@ -38,7 +38,7 @@ const ItemDetail = () => {
   };
 
   const handleBack = () => {
-    navigate(-1);
+    navigate("/explore");
   };
   return (
     <div className="d-flex flex-column align-items-center justify-content-center my-5">
@@ -64,7 +64,7 @@ const ItemDetail = () => {
         </Card.Body>
       </Card>
       <Button variant="warning" onClick={handleBack}>
-        Back to home
+        Continue Shopping
       </Button>
     </div>
   );
