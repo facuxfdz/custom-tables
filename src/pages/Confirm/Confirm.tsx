@@ -52,7 +52,7 @@ const Confirm = () => {
       setTel("")
     } else {
       // Logic to show an error
-      alert("FATAL ERROR");
+      alert("All fields are required");
     }
   };
   return (
